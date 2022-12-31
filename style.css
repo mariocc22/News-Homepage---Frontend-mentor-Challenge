@@ -1,0 +1,383 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap");
+
+/* Removing Paddings and Margins */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global variables */
+:root {
+  /* Primary */
+  --clr-sft-orng: hsl(35, 77%, 62%);
+  --clr-sft-red: hsl(5, 85%, 63%);
+  /* Neutral */
+  --clr-off-wht: hsl(36, 100%, 99%);
+  --clr-grysh-blue: hsl(233, 8%, 79%);
+  --clr-drk-grysh-blue: hsl(236, 13%, 42%);
+  --clr-vry-drk-blue: hsl(240, 100%, 5%);
+  /* Typography */
+  --ff-content: "Inter", sans-serif;
+  --fw-nrml: 400;
+  --fw-bld: 700;
+  --fw-extra-bld: 800;
+  /* Dimensions */
+  --max-wdth: 1150px;
+  --gap-clmns: 3rem;
+}
+
+/* General styles */
+html {
+  font-size: 15px;
+  font-family: var(--ff-content);
+}
+
+body {
+  position: relative;
+  background-color: var(--clr-off-wht);
+  padding: 2rem 1rem;
+  overflow-x: hidden;
+}
+
+main {
+  display: grid;
+  /* This grid-auto-columns will assign the same size to all columns */
+  grid-auto-columns: 1fr;
+  grid-template-areas:
+    "first"
+    "second"
+    "third";
+  gap: var(--gap-clmns);
+  padding: 2rem 0;
+}
+
+/* Grid template areas naming */
+.section-1 {
+  display: flex;
+  flex-direction: column;
+  grid-area: first;
+}
+.section-2 {
+  grid-area: second;
+}
+.section-3 {
+  grid-area: third;
+}
+
+/* Nav Bar */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+nav ul {
+  display: flex;
+  gap: 3rem;
+  transition: all 0.25s ease;
+}
+
+nav ul li {
+  list-style: none;
+}
+
+nav ul li a {
+  color: var(--clr-drk-grysh-blue);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* Hamburger Menu */
+.hamburger {
+  display: none;
+  position: relative;
+  cursor: pointer;
+  z-index: 9999;
+  user-select: none;
+  appearance: none;
+  border: none;
+  outline: none;
+  background: none;
+}
+
+.hamburger span {
+  display: block;
+  position: relative;
+  width: 4rem;
+  height: 0.25rem;
+  background-color: var(--clr-vry-drk-blue);
+  border-radius: 100vh;
+  transform-origin: 0 0;
+  transition: all 0.4s ease;
+}
+
+.hamburger :not(:last-child) {
+  margin-bottom: 0.375rem;
+}
+
+.mobile-menu-btn {
+  position: fixed;
+  right: 1rem;
+  display: block;
+}
+
+/* Overlay when click on Hamburger Menu */
+.overlay {
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 100;
+  transition: all 0.25s ease;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Section 1 styles */
+.section-1-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.section-1 img {
+  grid-area: image;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.section-1 h1 {
+  grid-area: title;
+  font-size: clamp(3rem, 10vw, 3.5rem);
+  font-weight: var(--fw-extra-bld);
+  color: var(--clr-vry-drk-blue);
+}
+
+.section-1 .sub-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: initial;
+}
+
+.section-1 p {
+  font-weight: var(--fw-nrml);
+  color: var(--clr-drk-grysh-blue);
+  line-height: 2;
+}
+
+.section-1 button {
+  position: relative;
+  font-weight: var(--fw-bld);
+  color: var(--clr-off-wht);
+  width: fit-content;
+  background-color: var(--clr-sft-red);
+  padding: 1rem 2.5rem;
+  border: none;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  cursor: pointer;
+  z-index: 0;
+  transition: all 0.25s ease;
+}
+
+.section-1 button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  background-color: var(--clr-vry-drk-blue);
+  opacity: 0;
+  transition: 0.25s all ease;
+}
+
+/* Section 2 styles */
+.section-2 {
+  color: var(--clr-off-wht);
+  background-color: var(--clr-vry-drk-blue);
+  padding: 1.5rem 1.5rem 0;
+  line-height: 2;
+}
+
+.section-2 h2 {
+  font-size: 2rem;
+  color: var(--clr-sft-orng);
+}
+
+.section-2 p {
+  color: var(--clr-grysh-blue);
+}
+
+.section-2 article {
+  padding: 1rem 0 2rem;
+}
+.section-2 :nth-child(3) {
+  border-top: 1px solid var(--clr-drk-grysh-blue);
+  border-bottom: 1px solid var(--clr-drk-grysh-blue);
+}
+
+/* Section 3 styles */
+.section-3 {
+  display: grid;
+  gap: var(--gap-clmns);
+  grid-template-columns: 1fr;
+}
+
+.section-3 article {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  line-height: 1.75;
+}
+
+.section-3 article img {
+  height: 8.5rem;
+}
+
+.section-3 article .content span {
+  font-size: 2rem;
+  font-weight: var(--fw-extra-bld);
+  color: var(--clr-grysh-blue);
+}
+
+.section-3 article .content h3 {
+  font-weight: var(--fw-extra-bld);
+  color: var(--clr-vry-drk-blue);
+}
+
+.section-3 article .content p {
+  color: var(--clr-drk-grysh-blue);
+}
+
+/* Attribution styles */
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+
+/* Class for Max Size */
+.max-size {
+  max-width: var(--max-wdth);
+  margin: auto;
+}
+
+/* Hamburger Menu Animation */
+.hamburger:hover span:nth-child(2) {
+  transform: translateX(-10px);
+  background-color: var(--clr-sft-red);
+}
+
+.hamburger.is-active span:nth-child(1) {
+  transform: translate(0.25rem, -0.55rem) rotate(45deg);
+}
+
+.hamburger.is-active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(1rem);
+}
+
+.hamburger.is-active span:nth-child(3) {
+  transform: translate(0.125rem, 1rem) rotate(-45deg);
+}
+
+.hamburger.is-active span {
+  background-color: var(--clr-sft-red);
+}
+
+/* Hover effects */
+
+/* Read More Button hover effect (using its class name) */
+.btn__read-more:hover::before {
+  left: 0;
+  right: 0;
+  opacity: 1;
+  z-index: -1;
+}
+
+/* H3 Sub-titles effect */
+.section-2 article h3:hover {
+  color: var(--clr-sft-orng);
+  cursor: pointer;
+  transition: 0.25s all ease;
+}
+
+.section-3 article h3:hover {
+  color: var(--clr-sft-red);
+  cursor: pointer;
+  transition: 0.25s all ease;
+}
+
+/* Nav Bar hover effect */
+nav ul li:hover a {
+  color: var(--clr-sft-orng);
+}
+
+/* Media queries (breakpoints) */
+@media (min-width: 1000px) {
+  /* Nav Bar */
+  nav .hamburger {
+    display: none;
+  }
+  /* Main -> Grid Layout */
+  main {
+    grid-template-areas:
+      "first first second"
+      "third third third";
+  }
+
+  /* Section 1 -> flex layout */
+  .section-1-content {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--gap-clmns);
+  }
+
+  .section-1-content > * {
+    /* This will help us to have 2 equal columns */
+    flex: 1;
+  }
+
+  /* Section 3 -> grid layout */
+  .section-3 {
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center left;
+  }
+}
+
+@media (max-width: 750px) {
+  /* This is for our sidebar menu */
+  .primary-nav {
+    position: fixed;
+    inset: 0 0 0 30%;
+    flex-direction: column;
+    gap: 2rem;
+    background-color: var(--clr-off-wht);
+    z-index: 1000;
+    padding: min(20vh, 15rem) 2rem;
+  }
+
+  .hide-nav {
+    transform: translateX(100%);
+  }
+
+  /* This will show our hamburger menu */
+  .hamburger {
+    display: block;
+  }
+
+  /* Increase font size of nav links */
+  .sidebar-menu {
+    font-size: large;
+    color: var(--clr-vry-drk-blue);
+  }
+} ;
